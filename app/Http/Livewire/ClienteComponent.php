@@ -10,6 +10,6 @@ class ClienteComponent extends Component
     public function render()
     {
         $clientes = Cliente::all();
-        return view('livewire.cliente-component');
+        return view('livewire.cliente-component', ['clientes' => $clientes]);
     }
 }
