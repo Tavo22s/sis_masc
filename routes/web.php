@@ -6,7 +6,7 @@ use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
-use App\Http\Livewire\ClienteComponent;
+use App\Livewire\ClienteComponent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -22,13 +22,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', function () {
 		return view('dashboard');
 	})->name('dashboard');
+
+	Route::get('/clientes', function () {
+		return view('clientes');
+	})->name('clientes');
+
 
 	Route::get('billing', function () {
 		return view('billing');
@@ -87,5 +91,3 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
-
-Route::get('/clientes', [ClienteComponent::class, 'render'])->name('clientes');

@@ -1,7 +1,3 @@
-@extends('layouts.user_type.auth')
-
-@section('content')
-
 <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <div class="container-fluid py-4">
       <div class="row">
@@ -10,16 +6,16 @@
             <div class="card-header">
               <h6>LISTA DE CLIENTES</h6>
               <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-5">
                   <label class="form-label text-sm" for="buscar">Buscar</label>
                   <div class="input-group">
                     <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Type here...">
+                    <input id="busqueda" wire:model.live="busqueda" type="text" class="form-control" placeholder="Buscar...">
                   </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-5">
                   <label class="form-label" for="showToastPlacement">&nbsp;</label>
-                  <button id="showToastPlacement" class="btn btn-primary d-block active mb-0 text-white" type="button">Agregar Cliente</button>
+                  <button class="btn btn-primary d-block active mb-0 text-white" type="button">Agregar Cliente</button>
                 </div>
               </div>
             </div>
@@ -70,5 +66,3 @@
       </div>
     </div>
   </main>
-
-@endsection
