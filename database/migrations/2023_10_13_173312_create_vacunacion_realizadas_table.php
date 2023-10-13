@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('consulta', function (Blueprint $table) {
+        Schema::create('vacunacion_realizadas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('mascota_id');
-            $table->string('motivo_consulta', 50);
+            $table->unsignedBigInteger('vacuna_id');
             $table->date('fecha_consulta');
+            $table->boolean('ind_vacunacion');
+            $table->date('fecha_proxima_vacunacion');
+            $table->string('observaciones', 50);
             $table->string('recomendaciones', 50);
-            $table->string('motivo_proxima_consulta', 50);
-            $table->date('fecha_proxima_consulta');
-            $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            $table->foreign('mascota_id')->references('id')->on('mascota');
+            $table->foreign('mascota_id')->references('id')->on('mascotas');
+            $table->foreign('vacuna_id')->references('id')->on('vacunas');
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('consulta');
+        Schema::dropIfExists('vacunacion_realizadas');
     }
 };

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('examen_medico', function (Blueprint $table) {
+        Schema::create('examen_medicos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('consulta_id');
             $table->integer('peso');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            $table->foreign('consulta_id')->references('id')->on('consulta');
+            $table->foreign('consulta_id')->references('id')->on('consultas');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('examen_medico');
+        Schema::dropIfExists('examen_medicos');
     }
 };

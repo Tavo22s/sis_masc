@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('desparacitacion_realizada', function (Blueprint $table) {
+        Schema::create('desparacitacion_realizadas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('mascota_id');
             $table->date('fecha_desparacitacion');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('recomendaciones', 50);
             $table->timestamps();
 
-            $table->foreign('mascota_id')->references('id')->on('mascota');
+            $table->foreign('mascota_id')->references('id')->on('mascotas');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('desparacitacion_realizada');
+        Schema::dropIfExists('desparacitacion_realizadas');
     }
 };

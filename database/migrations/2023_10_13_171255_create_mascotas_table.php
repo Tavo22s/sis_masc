@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mascota', function (Blueprint $table) {
+        Schema::create('mascotas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 20)->nullable(false);
             $table->integer('edad');
@@ -23,9 +23,9 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            $table->foreign('cliente_id')->references('id')->on('cliente');
-            $table->foreign('raza_id')->references('id')->on('raza');
-            $table->foreign('especie_id')->references('id')->on('especie');
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('raza_id')->references('id')->on('razas');
+            $table->foreign('especie_id')->references('id')->on('especies');
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mascota');
+        Schema::dropIfExists('mascotas');
     }
 };
