@@ -1,5 +1,5 @@
-<div class="modal fade" id="cliente-modal" data-bs-backdrop="static">
-    <div class="modal-dialog" role="document">
+<div wire:ignore.self class="modal fade" id="cliente-modal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Agregar Cliente</h5>
@@ -76,8 +76,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button wire:click.prevent="Crear()" class="btn bg-gradient-primary">Guardar</button>
+                <button wire:click="default()" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
+                @if($id_seleccionado === 0)
+                <button wire:click.prevent="Crear()" class="btn bg-gradient-primary">Crear</button>
+                @else
+                <button wire:click.prevent="Update()" class="btn bg-gradient-primary">Guardar</button>
+                @endif
             </div>
         </div>
     </div>

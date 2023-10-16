@@ -12,7 +12,7 @@
                     <div class="col-sm-7">
                       <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input id="busqueda" wire:model.live="busqueda" type="text" class="form-control" placeholder="Buscar...">
+                        <input id="busqueda" wire:model.live="busqueda" type="search" class="form-control" placeholder="Buscar...">
                       </div>
                     </div>
                     <button class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
@@ -63,12 +63,14 @@
                                       <p class="text-xs font-weight-bold mb-0">{{ $cliente->telefono_2 }}</p>
                                   </td>
                                   <td class="text-center">
-                                      <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Cliente">
+                                      <a wire:click="Editar({{ $cliente->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#cliente-modal" href="javascript:void(0);">
                                           <i class="fas fa-user-edit text-secondary"></i>
                                       </a>
-                                      <span>
-                                          <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                      </span>
+                                      <a wire:click="Destroy({{ $cliente->id }})" wire:confirm="¿Esta seguro?" href="javascript:void(0);">
+                                        <span>
+                                            <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                        </span>
+                                      </a>
                                   </td>
                                 </tr>
                               @endforeach
