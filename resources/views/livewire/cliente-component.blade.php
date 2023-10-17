@@ -18,6 +18,7 @@
                     <button class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
                 </div>
                 @include('modals.cliente-modal')
+                @include('modals.mascota-modal')
               </div>
               <div class="card-body px-0 pt-0 pb-2">
                   <div class="table-responsive p-0">
@@ -48,7 +49,9 @@
                               @foreach ($clientes as $cliente)
                                 <tr>
                                   <td class="text-center">
-                                      <p class="text-xs font-weight-bold mb-0">{{ $cliente->nombre_completo }}</p>
+                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#mascota-modal">
+                                        <p class="text-xs font-weight-bold mb-0">{{ $cliente->nombre_completo }}</p>
+                                      </a>
                                   </td>
                                   <td class="text-center">
                                     <p class="text-xs font-weight-bold mb-0">{{ $cliente->correo }}</p>
