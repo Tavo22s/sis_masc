@@ -2,4 +2,6 @@
 
 @section('content')
 
+@livewire('especie-component')
+
 @endsection

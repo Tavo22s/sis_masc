@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Cliente;
+use App\Models\Especie;
 
 class ClienteSeeder extends Seeder
 {
@@ -35,6 +36,15 @@ class ClienteSeeder extends Seeder
             'dni' => '12223344',
             'telefono_1'=> '987684321',
             'telefono_2' => '987341654',
+        ]);
+        Especie::create([
+            'nombre_especie' => 'Perro',
+        ]);
+        Especie::create([
+            'nombre_especie' => 'Gato',
+        ]);
+        Especie::create([
+            'nombre_especie' => 'Conejo',
         ]);
     }
 }

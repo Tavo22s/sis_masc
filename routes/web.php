@@ -6,7 +6,6 @@ use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
-use App\Livewire\ClienteComponent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('clientes');
 	})->name('clientes');
 
+	Route::get('/especies', function(){
+		return view('especies');
+	})->name('especies');
 
 	Route::get('billing', function () {
 		return view('billing');
