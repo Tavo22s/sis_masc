@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Especie;
+use App\Models\Raza;
 
 class EspecieComponent extends Component
 {
@@ -19,6 +20,7 @@ class EspecieComponent extends Component
     {
         $this->nombre='';
         $this->id_seleccionado = 0;
+        $this->nombre_raza='';
     }
 
     public function Crear()
@@ -27,7 +29,7 @@ class EspecieComponent extends Component
             'nombre_especie' => $this->nombre,
         ]);
         $this->reset();
-        return redirect()->to('especie');
+        return redirect()->to('especies');
     }
 
     public function Editar($id)

@@ -38,13 +38,10 @@ class ClienteSeeder extends Seeder
             'telefono_2' => '987341654',
         ]);
         Especie::create([
-            'nombre_especie' => 'Perro',
+            'nombre_especie' => 'Caninos',
         ]);
         Especie::create([
-            'nombre_especie' => 'Gato',
-        ]);
-        Especie::create([
-            'nombre_especie' => 'Conejo',
+            'nombre_especie' => 'Felinos',
         ]);
     }
 }

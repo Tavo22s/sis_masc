@@ -19,13 +19,11 @@ return new class extends Migration
             $table->string('sexo', 10);
             $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('raza_id');
-            $table->unsignedBigInteger('especie_id');
             $table->boolean('activo')->default(true);
             $table->timestamps();
 
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->foreign('raza_id')->references('id')->on('razas');
-            $table->foreign('especie_id')->references('id')->on('especies');
         });
     }
 

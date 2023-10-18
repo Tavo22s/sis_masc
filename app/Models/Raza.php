@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Raza extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombre_raza',
+        'especie_id',
+    ];
 }

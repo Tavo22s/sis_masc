@@ -13,7 +13,7 @@ class ClienteComponent extends Component
         $dni='',
         $telefono1='',
         $telefono2='',
-        $id_seleccionado='';
+        $id_seleccionado=0;
     public function render()
     {
         $clientes = Cliente::where(function ($query) {
