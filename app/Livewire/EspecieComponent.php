@@ -9,11 +9,18 @@ use App\Models\Raza;
 class EspecieComponent extends Component
 {
     public $nombre='',
-        $id_seleccionado = 0;
+        $id_seleccionado = 0,
+        $add_r = false,
+        $r_name = '';
     public function render()
     {
         $especies = Especie::all();
-        return view('livewire.especie-component', ['especies' => $especies]);
+        $razas = [];
+        if($this->id_seleccionado > 0)
+        {
+            $razas = Raza::where('especie_id', $this->id_seleccionado);
+        }
+        return view('livewire.especie-component', ['especies' => $especies, 'razas' => $razas]);
     }
 
     public function default()
@@ -50,5 +57,30 @@ class EspecieComponent extends Component
         $this->default();
         $this->reset();
         return redirect()->to('especies');
+    }
+
+    public function OpenAdd()
+    {
+        $this->add_r = true;
+    }
+
+    public function CloseAdd()
+    {
+        $this->add_r = false;
+    }
+
+    public function def_r()
+    {
+        $this->r_name = '';
+        $this->CloseAdd();
+    }
+
+    public function save_r()
+    {
+        Raza::create([
+            'especie_id' => $this->id_seleccionado,
+            'nombre_raza' => $this->r_name
+        ]);
+        $this->def_r();
     }
 }

@@ -8,15 +8,15 @@
                           <h5 class="mb-0">Lista de Clientes</h5>
                       </div>
                   </div>
-                  <div class="d-flex flex-row justify-content-between py-2">
-                    <div class="col-sm-7">
-                      <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input id="busqueda" wire:model.live="busqueda" type="search" class="form-control" placeholder="Buscar...">
-                      </div>
+                    <div class="d-flex flex-row justify-content-between py-2">
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                <input id="busqueda" wire:model.live="busqueda" type="search" class="form-control" placeholder="Buscar...">
+                            </div>
+                        </div>
+                        <button class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
                     </div>
-                    <button class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
-                </div>
                 @include('modals.cliente-modal')
                 @include('modals.mascota-modal')
               </div>

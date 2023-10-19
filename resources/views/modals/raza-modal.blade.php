@@ -1,5 +1,5 @@
 <div wire:ignore.self class="modal fade" id="raza-modal" data-bs-backdrop="static">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ $nombre }}</h5>
@@ -13,6 +13,17 @@
             <hr class="m-0"/>
 
             <div class="modal-body">
+                <div class="card-header pb-0">
+                    <div class="d-flex flex-row justify-content-between py-2">
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                <input id="busqueda" wire:model.live="busqueda" type="search" class="form-control" placeholder="Buscar...">
+                            </div>
+                        </div>
+                        <button wire:click.prevent="OpenAdd()" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Agregar Raza</button>
+                    </div>
+              </div>
                 <div class="card-body pt-4 p-3">
                     <div class="row">
                         <div class="table-responsive p-0">
@@ -28,6 +39,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if($add_r)
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="col-sm-7">
+                                                        <input wire:model="r_name" type="search" class="form-control text-center" placeholder="Raza">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <button wire:click.prevent="save_r()" type="button" class="btn bg-gradient-dark">Guardar</button>
+                                                <button wire:click.prevent="CloseAdd" type="button" class="btn bg-gradient-danger">Cancelar</button>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                    @foreach ($razas as $raza)
+                                        <tr>
+                                            <td class="text-center">
+                                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="">
+                                                    <p class="text-md font-weight-bold mb-0">$raza->nombre_raza</p>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                            </td>
+                                        </tr>    
+                                    @endforeach
                                     <tr>
                                         <td class="text-center">
                                             <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="">
