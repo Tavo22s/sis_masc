@@ -21,8 +21,8 @@
                 @include('modals.mascota-modal')
               </div>
               <div class="card-body px-0 pt-0 pb-2">
-                  <div class="table-responsive p-0">
-                      <table class="table align-items-center mb-0">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
                           <thead>
                               <tr>
                                   <th class="text-center text-secondary text-xs font-weight-bolder opacity-7">
@@ -45,41 +45,41 @@
                                   </th>
                               </tr>
                           </thead>
-                          <tbody>
-                              @foreach ($clientes as $cliente)
-                                <tr>
-                                  <td class="text-center">
-                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#mascota-modal">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $cliente->nombre_completo }}</p>
-                                      </a>
-                                  </td>
-                                  <td class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">{{ $cliente->correo }}</p>
-                                </td>
-                                  <td class="text-center">
-                                      <p class="text-xs font-weight-bold mb-0">{{ $cliente->dni }}</p>
-                                  </td>
-                                  <td class="text-center">
-                                      <p class="text-xs font-weight-bold mb-0">{{ $cliente->telefono_1 }}</p>
-                                  </td>
-                                  <td class="text-center">
-                                      <p class="text-xs font-weight-bold mb-0">{{ $cliente->telefono_2 }}</p>
-                                  </td>
-                                  <td class="text-center">
-                                      <a wire:click="Editar({{ $cliente->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#cliente-modal" href="javascript:void(0);">
-                                          <i class="fas fa-user-edit text-secondary"></i>
-                                      </a>
-                                      <a wire:click="Destroy({{ $cliente->id }})" wire:confirm="¿Esta seguro?" href="javascript:void(0);">
-                                        <span>
-                                            <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                        </span>
-                                      </a>
-                                  </td>
-                                </tr>
-                              @endforeach
-                          </tbody>
-                      </table>
-                  </div>
+                            <tbody>
+                                @foreach ($clientes as $cliente)
+                                    <tr>
+                                        <td class="text-center">
+                                            <a wire:click="Editar({{ $cliente->id }})" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#mascota-modal">
+                                                <p class="text-xs font-weight-bold mb-0">{{ $cliente->nombre_completo }}</p>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <p class="text-xs font-weight-bold mb-0">{{ $cliente->correo }}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <p class="text-xs font-weight-bold mb-0">{{ $cliente->dni }}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <p class="text-xs font-weight-bold mb-0">{{ $cliente->telefono_1 }}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <p class="text-xs font-weight-bold mb-0">{{ $cliente->telefono_2 }}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <a wire:click.prevent="Editar({{ $cliente->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#cliente-modal" href="javascript:void(0);">
+                                                <i class="fas fa-user-edit text-secondary"></i>
+                                            </a>
+                                            <a wire:click="Destroy({{ $cliente->id }})" wire:confirm="¿Esta seguro?" href="javascript:void(0);">
+                                                <span>
+                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
               </div>
           </div>
       </div>
