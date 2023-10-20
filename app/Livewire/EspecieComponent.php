@@ -11,14 +11,19 @@ class EspecieComponent extends Component
     public $nombre='',
         $id_seleccionado = 0,
         $add_r = false,
-        $r_name = '';
+        $r_name = '',
+        $id_r_sel=0,
+        $r_search='';
+        
     public function render()
     {
         $especies = Especie::all();
         $razas = [];
         if($this->id_seleccionado > 0)
         {
-            $razas = Raza::where('especie_id', $this->id_seleccionado);
+            $razas = Raza::where('especie_id', $this->id_seleccionado)
+                ->where('nombre_raza', 'like', '%' . $this->r_search . '%')
+                ->get();
         }
         return view('livewire.especie-component', ['especies' => $especies, 'razas' => $razas]);
     }
@@ -27,7 +32,7 @@ class EspecieComponent extends Component
     {
         $this->nombre='';
         $this->id_seleccionado = 0;
-        $this->nombre_raza='';
+        $this->r_search='';
     }
 
     public function Crear()
@@ -72,6 +77,7 @@ class EspecieComponent extends Component
     public function def_r()
     {
         $this->r_name = '';
+        $this->id_r_sel = 0;
         $this->CloseAdd();
     }
 
@@ -80,6 +86,22 @@ class EspecieComponent extends Component
         Raza::create([
             'especie_id' => $this->id_seleccionado,
             'nombre_raza' => $this->r_name
+        ]);
+        $this->def_r();
+    }
+
+    public function edit_r($id)
+    {
+        $this->id_r_sel = $id;
+        $raza = Raza::find($this->id_r_sel);
+        $this->r_name = $raza->nombre_raza;
+    }
+
+    public function update_r()
+    {
+        $raza = Raza::find($this->id_r_sel);
+        $raza->update([
+            'nombre_raza' => $this->r_name,
         ]);
         $this->def_r();
     }

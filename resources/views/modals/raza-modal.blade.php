@@ -18,7 +18,7 @@
                         <div class="col-sm-7">
                             <div class="input-group">
                                 <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                <input id="busqueda" wire:model.live="busqueda" type="search" class="form-control" placeholder="Buscar...">
+                                <input wire:model.live="r_search" type="search" class="form-control" placeholder="Buscar...">
                             </div>
                         </div>
                         <button wire:click.prevent="OpenAdd()" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Agregar Raza</button>
@@ -57,27 +57,27 @@
                                     @foreach ($razas as $raza)
                                         <tr>
                                             <td class="text-center">
-                                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="">
-                                                    <p class="text-md font-weight-bold mb-0">$raza->nombre_raza</p>
-                                                </a>
+                                                @if($id_r_sel != 0 && $raza->id === $id_r_sel)
+                                                    <div class="d-flex justify-content-center">
+                                                        <div class="col-sm-7">
+                                                            <input wire:model="r_name" class="form-control text-center" placeholder="Raza">
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <p class="text-md font-weight-bold mb-0">{{ $raza->nombre_raza  }}</p>
+                                                @endif
                                             </td>
                                             <td class="text-center">
-                                                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                @if($id_r_sel != 0 && $raza->id === $id_r_sel)
+                                                    <button wire:click.prevent="update_r()" type="button" class="btn bg-gradient-dark">Guardar</button>
+                                                    <button wire:click.prevent="def_r()" type="button" class="btn bg-gradient-danger">Cancelar</button>
+                                                @else
+                                                    <a wire:click.prevent="edit_r({{ $raza->id }})" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                @endif
                                             </td>
                                         </tr>    
                                     @endforeach
-                                    <tr>
-                                        <td class="text-center">
-                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="">
-                                                <p class="text-md font-weight-bold mb-0">Boxer</p>
-                                            </a>
-                                        </td>
-                                        <td class="text-center">
-                                            <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
