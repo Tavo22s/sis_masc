@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Cliente;
+use App\Models\Mascota;
 
 class ClienteComponent extends Component
 {
@@ -13,9 +14,11 @@ class ClienteComponent extends Component
         $dni='',
         $telefono1='',
         $telefono2='',
-        $id_seleccionado=0;
+        $id_seleccionado=0,
+        $m_busqueda;
     public function render()
     {
+        $mascotas=[];
         $clientes = Cliente::where(function ($query) {
             $query->where('nombre_completo', 'like', '%' . $this->busqueda . '%')
                   ->orWhere('correo', 'like', '%' . $this->busqueda . '%')
@@ -23,7 +26,18 @@ class ClienteComponent extends Component
                   ->orWhere('telefono_1', 'like', '%' . $this->busqueda . '%')
                   ->orWhere('telefono_2', 'like', '%' . $this->busqueda . '%');
         })->Where('activo', true)->get();
-        return view('livewire.cliente-component', ['clientes' => $clientes]);
+        if($this->id_seleccionado != 0)
+        {
+            $mascotas = Mascota::join('razas as r', 'raza_id', '=', 'r.id')
+                ->join('especies as e', 'r.especie_id', '=', 'e.id')
+                ->where('cliente_id', $this->id_seleccionado)
+                ->where('nombre', 'like', '%' . $this->m_busqueda . '%')
+                ->where('activo', true)
+                ->select('r.nombre_raza', 'e.nombre_especie', 'nombre', 'edad', 'sexo', 'observaciones', 'cliente_id', 'activo')
+                ->get();
+        }
+
+        return view('livewire.cliente-component', ['clientes' => $clientes, 'mascotas' => $mascotas]);
     }
 
     public function Crear()

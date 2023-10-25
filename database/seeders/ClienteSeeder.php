@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Cliente;
 use App\Models\Especie;
 use App\Models\Raza;
+use App\Models\Mascota;
 
 class ClienteSeeder extends Seeder
 {
@@ -74,5 +75,15 @@ class ClienteSeeder extends Seeder
             'especie_id' => 2,
             'nombre_raza' => 'Bengalí',
         ]);
+        
+        Mascota::create([
+            'nombre' => 'Rocky',
+            'edad' =>  '10',
+            'observaciones' => 'Buena',
+            'sexo' => 'Macho',
+            'cliente_id' => 1,
+            'raza_id' => 1,
+        ]);
+
     }
 }

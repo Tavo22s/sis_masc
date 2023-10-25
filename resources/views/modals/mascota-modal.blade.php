@@ -23,10 +23,10 @@
                     <div class="col-sm-7">
                         <div class="input-group">
                             <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                            <input wire:model="" type="search" class="form-control" placeholder="Buscar...">
+                            <input wire:model.live="m_busqueda" type="search" class="form-control" placeholder="Buscar...">
                         </div>
                     </div>
-                        <button wire:click.prevent="OpenAdd()" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Agregar Raza</button>
+                        <button wire:click.prevent="" class="btn bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#mascota-info-modal">+&nbsp; Agregar Raza</button>
                     </div>
                 </div>
                 <div class="card-body pt-4 p-3">
@@ -59,46 +59,48 @@
                                       Action
                                   </th>
                               </tr>
-                          </thead>
-                            <tbody>
-                                    <tr>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Canino</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Pug</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Rocky</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">6</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Macho</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Agresivo</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <a class="text-xs font-weight-bold mb-0" href="javascript:void(0);">Ir a Historial Clinica</a>
-                                        </td>
-                                        <td class="text-center">
-                                            <a wire:click.prevent="" class="mx-3" data-bs-toggle="modal" data-bs-target="#cliente-modal" href="javascript:void(0);">
-                                                <i class="fas fa-cog text-secondary"></i>
-                                            </a>
-                                            <a wire:click="" wire:confirm="¿Esta seguro?" href="javascript:void(0);">
-                                                <span>
-                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                            </tbody>
-                        </table>
+                            </thead>
+                                <tbody>
+                                    @foreach ($mascotas as $mascota)
+                                        <tr>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">{{ $mascota->nombre_especie }}</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">{{ $mascota->nombre_raza }}</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">{{ $mascota->nombre }}</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">{{ $mascota->edad }}</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">{{ $mascota->sexo }}</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">{{ $mascota->observaciones }}</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="text-xs font-weight-bold mb-0" href="javascript:void(0);">Ir a Historial Clinica</a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a wire:click.prevent="" class="mx-3" data-bs-toggle="modal" data-bs-target="#cliente-modal" href="javascript:void(0);">
+                                                    <i class="fas fa-cog text-secondary"></i>
+                                                </a>
+                                                <a wire:click="" wire:confirm="¿Esta seguro?" href="javascript:void(0);">
+                                                    <span>
+                                                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>  
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

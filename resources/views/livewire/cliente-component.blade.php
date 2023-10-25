@@ -19,6 +19,7 @@
                     </div>
                 @include('modals.cliente-modal')
                 @include('modals.mascota-modal')
+                @include('modals.mascota-info-modal')
               </div>
               <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
