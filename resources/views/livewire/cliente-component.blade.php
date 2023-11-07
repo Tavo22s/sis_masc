@@ -17,9 +17,6 @@
                         </div>
                         <button class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
                     </div>
-                @include('modals.cliente-modal')
-                @include('modals.mascota-modal')
-                @include('modals.mascota-info-modal')
               </div>
               <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -84,6 +81,9 @@
               </div>
           </div>
       </div>
+    @include('modals.cliente-modal')
+    @include('modals.mascota-modal')
+    @include('modals.mascota-info-modal')
   </div>
 </main>
 

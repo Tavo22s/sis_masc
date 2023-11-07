@@ -26,7 +26,7 @@
                             <input wire:model.live="m_busqueda" type="search" class="form-control" placeholder="Buscar...">
                         </div>
                     </div>
-                        <button wire:click.prevent="" class="btn bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#mascota-info-modal">+&nbsp; Agregar Raza</button>
+                        <button wire:click.prevent="AddMasc()" class="btn bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#mascota-info-modal">+&nbsp; Agregar Mascota</button>
                     </div>
                 </div>
                 <div class="card-body pt-4 p-3">

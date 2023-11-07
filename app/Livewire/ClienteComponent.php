@@ -2,9 +2,12 @@
 
 namespace App\Livewire;
 
+use Laravel\Sail\Console\AddCommand;
 use Livewire\Component;
 use App\Models\Cliente;
 use App\Models\Mascota;
+use App\Models\Especie;
+use App\Models\Raza;
 
 class ClienteComponent extends Component
 {
@@ -16,9 +19,19 @@ class ClienteComponent extends Component
         $telefono2='',
         $id_seleccionado=0,
         $m_busqueda;
+
+    public $mas_nom='',
+            $mas_edad='',
+            $mas_esp=0,
+            $mas_raz=0,
+            $mas_s='',
+            $mas_obs='',
+            $mas_id_sel=0;
     public function render()
     {
         $mascotas=[];
+        $razas=[];
+        $especies=[]; 
         $clientes = Cliente::where(function ($query) {
             $query->where('nombre_completo', 'like', '%' . $this->busqueda . '%')
                   ->orWhere('correo', 'like', '%' . $this->busqueda . '%')
@@ -35,9 +48,11 @@ class ClienteComponent extends Component
                 ->where('activo', true)
                 ->select('r.nombre_raza', 'e.nombre_especie', 'nombre', 'edad', 'sexo', 'observaciones', 'cliente_id', 'activo')
                 ->get();
+            $especies = Especie::all();
+            $razas = Raza::where('especie_id', $this->mas_esp)->get();
         }
 
-        return view('livewire.cliente-component', ['clientes' => $clientes, 'mascotas' => $mascotas]);
+        return view('livewire.cliente-component', ['clientes' => $clientes, 'mascotas' => $mascotas, 'especies' => $especies, 'razas' => $razas]);
     }
 
     public function Crear()
@@ -100,5 +115,34 @@ class ClienteComponent extends Component
 
         $this->reset();
         return redirect()->to('clientes');
+    }
+
+    public function AddMasc()
+    {
+        $especie = Especie::first();
+        $this->mas_esp = $especie->id;
+        $masc = Raza::where('especie_id', $this->mas_esp)->get();
+        $this->mas_raz = $masc[0]->id;
+        $this->mas_s = "Macho";
+        $this->mas_nom = '';
+        $this->mas_edad = '';
+        $this->mas_obs = '';
+    }
+
+    public function CreateMasc()
+    {
+        Mascota::create([
+            'nombre' => $this->mas_nom,
+            'edad' => $this->mas_edad,
+            'observaciones' => $this->mas_obs,
+            'sexo' => $this->mas_s,
+            'cliente_id' => $this->id_seleccionado,
+            'raza_id' => $this->mas_raz,
+        ]);
+    }
+
+    public function Rdata($id)
+    {
+        $this->dispatch('id-paciente', mascota_id: $id);
     }
 }

@@ -2,8 +2,8 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cliente</h5>
-                <button wire:click="default()" type="button" class="rounded btn-danger" data-bs-dismiss="modal">
+                <h5 class="modal-title">Agregar Mascota</h5>
+                <button type="button" class="rounded btn-danger" data-bs-dismiss="modal">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><style>svg{fill:#ffffff}</style><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
                     </span>
@@ -15,11 +15,33 @@
             <div class="modal-body">
                 <div class="card-body pt-4 p-3">
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="mas-especie" class="form-control-label">{{ __('Especie') }}</label>
+                                <select wire:model.live="mas_esp" class="form-select" name="especie" id="especie">
+                                    @foreach ($especies as $especie)
+                                        <option value="{{ $especie->id }}">{{ $especie->nombre_especie }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="mas-raza" class="form-control-label">{{ __('Raza') }}</label>
+                                <select wire:model="mas_raz" class="form-select" name="raza" id="raza">
+                                    @foreach ($razas as $raza)
+                                    <option value="{{ $raza->id }}">{{ $raza->nombre_raza }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="cliente-nombre" class="form-control-label">{{ __('Nombre') }}</label>
+                                <label for="cliente-nombre" class="form-control-label">{{ __('Nombre de mascota') }}</label>
                                 <div class="@error('cliente.nombre')border border-danger rounded-3 @enderror">
-                                    <input wire:model="nombre" class="form-control" value="" type="text" placeholder="Nombre" id="cliente-nombre" name="nombre">
+                                    <input wire:model="mas_nom" class="form-control" value="" type="text" placeholder="Nombre" id="cliente-nombre" name="nombre">
                                         @error('nombre')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
@@ -28,9 +50,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-email" class="form-control-label">{{ __('Correo') }}</label>
+                                <label for="user-email" class="form-control-label">{{ __('Edad') }}</label>
                                 <div class="@error('email')border border-danger rounded-3 @enderror">
-                                    <input wire:model="correo" class="form-control" value="" type="email" placeholder="@example.com" id="cliente-correo" name="email">
+                                    <input wire:model="mas_edad" class="form-control" value="" type="edad" placeholder="edad" id="cliente-correo" name="email">
                                         @error('email')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
@@ -39,50 +61,32 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="cliente.dni" class="form-control-label">{{ __('DNI') }}</label>
-                                <div class="@error('clinte.dni')border border-danger rounded-3 @enderror">
-                                    <input wire:model="dni" class="resize-none form-control" type="tel" placeholder="DNI" id="dni" name="dni" value="">
-                                        @error('dni')
-                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                        @enderror
-                                </div>
+                                <label for="mas-raza" class="form-control-label">{{ __('Sexo') }}</label>
+                                <select wire:model.live="mas_s" class="form-select" name="sexo" id="sexo">
+                                    <option value="Macho">Macho</option>
+                                    <option value="Hembra">Hembra</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="cliente.phone1" class="form-control-label">{{ __('Telefono 1') }}</label>
-                                <div class="@error('cliente.phone1')border border-danger rounded-3 @enderror">
-                                    <input wire:model="telefono1" class="form-control" type="tel" placeholder="40770888444" id="telefono1" name="phone1" value="">
-                                        @error('phone1')
-                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                        @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cliente.phone2" class="form-control-label">{{ __('Telefono 2') }}</label>
-                                <div class="@error('cliente.phone2')border border-danger rounded-3 @enderror">
-                                    <input wire:model="telefono2" class="form-control" type="tel" placeholder="40770888444" id="telefono2" name="phone2" value="">
-                                        @error('phone2')
-                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                        @enderror
+                                <label for="cliente.phone1" class="form-control-label">{{ __('Observaciones') }}</label>
+                                    <textarea wire:model="mas_obs" class="form-control" rows="3" placeholder="What's up?" required></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button wire:click="default()" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
-                @if($id_seleccionado === 0)
-                <button wire:click.prevent="Crear()" class="btn bg-gradient-primary">Crear</button>
-                @else
-                <button wire:click.prevent="Update()" class="btn bg-gradient-primary">Guardar</button>
-                @endif
+                <div class="modal-footer">
+                    <button class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
+                    @if($mas_id_sel === 0)
+                    <button wire:click.prevent="CreateMasc()" class="btn bg-gradient-primary" data-bs-dismiss="modal">Crear</button>
+                    @else
+                    <button wire:click.prevent="Update()" class="btn bg-gradient-primary">Guardar</button>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
-</div>
