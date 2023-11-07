@@ -82,7 +82,7 @@
                                                 <p class="text-xs font-weight-bold mb-0">{{ $mascota->observaciones }}</p>
                                             </td>
                                             <td class="text-center">
-                                                <a class="text-xs font-weight-bold mb-0" href="javascript:void(0);">Ir a Historial Clinica</a>
+                                                <a wire:click="Rdata({{ $mascota->id }})" class="text-xs font-weight-bold mb-0" href="javascript:void(0);">Ir a Historial Clinica</a>
                                             </td>
                                             <td class="text-center">
                                                 <a wire:click.prevent="" class="mx-3" data-bs-toggle="modal" data-bs-target="#cliente-modal" href="javascript:void(0);">

@@ -8,6 +8,7 @@ use App\Models\Cliente;
 use App\Models\Mascota;
 use App\Models\Especie;
 use App\Models\Raza;
+use Illuminate\Support\Facades\Crypt;
 
 class ClienteComponent extends Component
 {
@@ -46,7 +47,7 @@ class ClienteComponent extends Component
                 ->where('cliente_id', $this->id_seleccionado)
                 ->where('nombre', 'like', '%' . $this->m_busqueda . '%')
                 ->where('activo', true)
-                ->select('r.nombre_raza', 'e.nombre_especie', 'nombre', 'edad', 'sexo', 'observaciones', 'cliente_id', 'activo')
+                ->select('r.nombre_raza', 'e.nombre_especie', 'mascotas.id', 'nombre', 'edad', 'sexo', 'observaciones', 'cliente_id', 'activo')
                 ->get();
             $especies = Especie::all();
             $razas = Raza::where('especie_id', $this->mas_esp)->get();
@@ -143,6 +144,6 @@ class ClienteComponent extends Component
 
     public function Rdata($id)
     {
-        $this->dispatch('id-paciente', mascota_id: $id);
+        redirect()->to('/historia-clinica-' . $id);
     }
 }

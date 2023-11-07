@@ -9,6 +9,7 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\ConsultaComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/especies', function(){
 		return view('especies');
 	})->name('especies');
+
+	Route::get('/historia-clinica-{id}', [ConsultaComponent::class, 'show'])->name('historia-clinica');
 
 	Route::get('billing', function () {
 		return view('billing');
