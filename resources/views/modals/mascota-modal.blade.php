@@ -85,7 +85,7 @@
                                                 <a wire:click="Rdata({{ $mascota->id }})" class="text-xs font-weight-bold mb-0" href="javascript:void(0);">Ir a Historial Clinica</a>
                                             </td>
                                             <td class="text-center">
-                                                <a wire:click.prevent="" class="mx-3" data-bs-toggle="modal" data-bs-target="#cliente-modal" href="javascript:void(0);">
+                                                <a wire:click.prevent="EditMasc({{ $mascota->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#mascota-info-modal" href="javascript:void(0);">
                                                     <i class="fas fa-cog text-secondary"></i>
                                                 </a>
                                                 <a wire:click="" wire:confirm="¿Esta seguro?" href="javascript:void(0);">

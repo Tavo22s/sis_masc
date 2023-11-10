@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 20)->nullable(false);
             $table->integer('edad');
-            $table->string('observaciones', 150);
+            $table->string('observaciones', 256);
             $table->string('sexo', 10);
             $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('raza_id');

@@ -17,7 +17,12 @@ class MascotaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => $this->faker->firstName(),
+            'edad' => $this->faker->numberBetween(0, 10),
+            'observaciones' => $this->faker->sentence(),
+            'sexo' => $this->faker->randomElement(['Macho', 'Hembra']),
+            'cliente_id' => $this->faker->numberBetween(1, 30),
+            'raza_id' => $this->faker->numberBetween(1, 6),
         ];
     }
 }

@@ -3,9 +3,8 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Livewire\Attributes\On;
-use Illuminate\Support\Facades\Crypt;
 use App\Models\Mascota;
+use Illuminate\Encryption\Encrypter;
 
 class ConsultaComponent extends Component
 {
@@ -13,7 +12,14 @@ class ConsultaComponent extends Component
     private $m;
     public function mount($id)
     {
-        $this->local_id = $id;
+        $clave = env('APP_KEY');
+        
+        $parts = explode(':', $id);
+        $iv = base64_decode(str_replace('-', '/', $parts[0]));
+        $textoCifrado = str_replace('-', '/', $parts[1]);
+        $this->local_id = openssl_decrypt($textoCifrado, 'aes-256-cbc', $clave, 0, $iv);
+
+        
         $this->m = Mascota::select('mascotas.nombre', 'mascotas.edad', 'mascotas.sexo', 'clientes.nombre_completo', 'clientes.correo',
                                     'clientes.dni', 'clientes.telefono_1', 'clientes.telefono_2', 'razas.nombre_raza', 'especies.nombre_especie')
             ->join('razas', 'mascotas.raza_id', '=', 'razas.id')

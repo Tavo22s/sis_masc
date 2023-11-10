@@ -15,13 +15,14 @@
                                 <input id="busqueda" wire:model.live="busqueda" type="search" class="form-control" placeholder="Buscar...">
                             </div>
                         </div>
-                        <button class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
+                        <button class="btn bg-gradient-secondary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
                     </div>
               </div>
               <div class="card-body px-0 pt-0 pb-2">
+                <div class="container">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
-                          <thead>
+                          <thead class="table-dark">
                               <tr>
                                   <th class="text-center text-secondary text-xs font-weight-bolder opacity-7">
                                       Nombre
@@ -78,6 +79,7 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
               </div>
           </div>
       </div>

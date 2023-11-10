@@ -27,12 +27,12 @@ class ClienteComponent extends Component
             $mas_raz=0,
             $mas_s='',
             $mas_obs='',
-            $mas_id_sel=0;
+            $mas_id_sel=0,
+            $razas=[],
+            $especies=[];
     public function render()
     {
         $mascotas=[];
-        $razas=[];
-        $especies=[]; 
         $clientes = Cliente::where(function ($query) {
             $query->where('nombre_completo', 'like', '%' . $this->busqueda . '%')
                   ->orWhere('correo', 'like', '%' . $this->busqueda . '%')
@@ -49,11 +49,11 @@ class ClienteComponent extends Component
                 ->where('activo', true)
                 ->select('r.nombre_raza', 'e.nombre_especie', 'mascotas.id', 'nombre', 'edad', 'sexo', 'observaciones', 'cliente_id', 'activo')
                 ->get();
-            $especies = Especie::all();
-            $razas = Raza::where('especie_id', $this->mas_esp)->get();
+            $this->especies = Especie::all();
+            $this->razas = Raza::where('especie_id', $this->mas_esp)->get();
         }
 
-        return view('livewire.cliente-component', ['clientes' => $clientes, 'mascotas' => $mascotas, 'especies' => $especies, 'razas' => $razas]);
+        return view('livewire.cliente-component', ['clientes' => $clientes, 'mascotas' => $mascotas, 'especies' => $this->especies, 'razas' => $this->razas]);
     }
 
     public function Crear()
@@ -130,6 +130,28 @@ class ClienteComponent extends Component
         $this->mas_obs = '';
     }
 
+    public function EditMasc($id)
+    {
+        $this->AddMasc();
+        $mascotas = Mascota::join('razas as r', 'raza_id', '=', 'r.id')
+                ->join('especies as e', 'r.especie_id', '=', 'e.id')
+                ->where('mascotas.id', $id)
+                ->where('activo', true)
+                ->select('mascotas.raza_id', 'r.nombre_raza', 'e.nombre_especie', 'mascotas.id', 'nombre', 'edad', 'sexo', 'observaciones', 'cliente_id', 'activo')
+                ->get();
+        $mascotas = $mascotas[0];
+        $this->mas_nom = $mascotas->nombre;
+        $this->mas_edad = $mascotas->edad;
+        $this->mas_s = $mascotas->sexo;
+        $this->mas_obs = $mascotas->observaciones;
+        $this->especies = Especie::all();
+        $this->mas_esp = Raza::select('especie_id')->where('id', $this->mas_raz)->get();
+        $this->mas_esp = $this->mas_esp[0]->especie_id;
+        $this->razas = Raza::where('especie_id', $this->mas_esp)->get();
+        $this->mas_raz = $this->razas[0];
+        
+    }
+
     public function CreateMasc()
     {
         Mascota::create([
@@ -144,6 +166,12 @@ class ClienteComponent extends Component
 
     public function Rdata($id)
     {
-        redirect()->to('/historia-clinica-' . $id);
+        $clave = env('APP_KEY');
+        $iv = openssl_random_pseudo_bytes(16);
+        $iv = str_replace('/', '-', base64_encode($iv));
+        $en =openssl_encrypt($id, 'aes-256-cbc', $clave, 0, base64_decode(str_replace('-', '/', $iv))); 
+        $en = str_replace('/', '-', $en);
+        $r = $iv . ':' . $en;
+        redirect()->to('/historia-clinica/' . $r);
     }
 }
