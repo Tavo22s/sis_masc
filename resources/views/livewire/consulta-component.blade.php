@@ -21,13 +21,13 @@
                                     <span class="text-sm font-weight-bold">Nombre:</span>
                                   </td>
                                   <td class="align-middle text-center">
-                                    <span class="text-sm font-weight-bold">{{ $mascota->nombre }}</span>
+                                    <span class="text-sm font-weight-bold">{{ $datos->nombre }}</span>
                                   </td>
                                   <td class="table-dark align-middle text-center">
                                     <span class="text-sm font-weight-bold">Cliente:</span>
                                   </td>
                                   <td class="align-middle text-center">
-                                    <span class="text-sm font-weight-bold">Ana Lopez</span>
+                                    <span class="text-sm font-weight-bold">{{ $datos->nombre_completo}}</span>
                                   </td>     
                                 </tr>
                                 <tr>
@@ -35,13 +35,13 @@
                                       <span class="text-sm font-weight-bold">Raza:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">Pug</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->nombre_raza }}</span>
                                     </td>
                                     <td class="table-dark align-middle text-center">
                                       <span class="text-sm font-weight-bold">Correo:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">ana@example.com</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->correo }}</span>
                                     </td>     
                                 </tr>
                                 <tr>
@@ -49,13 +49,13 @@
                                       <span class="text-sm font-weight-bold">Especie:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">Canino</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->nombre_especie }}</span>
                                     </td>
                                     <td class="table-dark align-middle text-center">
                                       <span class="text-sm font-weight-bold">DNI:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">78547854</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->dni }}</span>
                                     </td>     
                                 </tr>
                                 <tr>
@@ -63,13 +63,13 @@
                                       <span class="text-sm font-weight-bold">Edad:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">{{ $mascota->edad }}</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->edad }}</span>
                                     </td>
                                     <td class="table-dark align-middle text-center">
                                       <span class="text-sm font-weight-bold">Telefono 1:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">987654321</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->telefono_1 }}</span>
                                     </td>     
                                 </tr>
                                 <tr>
@@ -77,13 +77,13 @@
                                       <span class="text-sm font-weight-bold">Sexo:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">{{ $mascota->sexo }}</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->sexo }}</span>
                                     </td>
                                     <td class="table-dark align-middle text-center">
                                       <span class="text-sm font-weight-bold">Telefono 2:</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                      <span class="text-sm font-weight-bold">951847632</span>
+                                      <span class="text-sm font-weight-bold">{{ $datos->telefono_2 }}</span>
                                     </td>     
                                 </tr>
                                 <tr class="table-dark">
