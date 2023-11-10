@@ -3,7 +3,7 @@
         <div class="col-12">
           <div class="card mb-4 mx-4">
             <div class="card-header pb-0">
-                <h6>Especies</h6>
+                <h5 class="mb-0">Especies</h5>
                 <div class="d-flex flex-row justify-content-between py-2">
                     <div class="col-sm-7">
                     </div>
