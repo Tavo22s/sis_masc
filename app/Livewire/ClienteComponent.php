@@ -30,6 +30,8 @@ class ClienteComponent extends Component
             $mas_id_sel=0,
             $razas=[],
             $especies=[];
+
+    private $tmp = 0;
     public function render()
     {
         $mascotas=[];
@@ -139,17 +141,19 @@ class ClienteComponent extends Component
                 ->where('activo', true)
                 ->select('mascotas.raza_id', 'r.nombre_raza', 'e.nombre_especie', 'mascotas.id', 'nombre', 'edad', 'sexo', 'observaciones', 'cliente_id', 'activo')
                 ->get();
+
+
+        $this->mas_id_sel = $id;
         $mascotas = $mascotas[0];
         $this->mas_nom = $mascotas->nombre;
         $this->mas_edad = $mascotas->edad;
         $this->mas_s = $mascotas->sexo;
         $this->mas_obs = $mascotas->observaciones;
+        $this->mas_raz = $mascotas->raza_id;
         $this->especies = Especie::all();
-        $this->mas_esp = Raza::select('especie_id')->where('id', $this->mas_raz)->get();
+        $this->mas_esp = Raza::where('id', $this->mas_raz)->get();
         $this->mas_esp = $this->mas_esp[0]->especie_id;
         $this->razas = Raza::where('especie_id', $this->mas_esp)->get();
-        $this->mas_raz = $this->razas[0];
-        
     }
 
     public function CreateMasc()
@@ -173,5 +177,18 @@ class ClienteComponent extends Component
         $en = str_replace('/', '-', $en);
         $r = $iv . ':' . $en;
         redirect()->to('/historia-clinica/' . $r);
+    }
+
+    public function UpdateMasc()
+    {
+        $mascota = Mascota::find($this->mas_id_sel);
+        $mascota->update([
+            'nombre' => $this->mas_nom,
+            'edad' => $this->mas_edad,
+            'observaciones' => $this->mas_obs,
+            'sexo' => $this->mas_s,
+            'cliente_id' => $this->id_seleccionado,
+            'raza_id' => $this->mas_raz,
+        ]);      
     }
 }

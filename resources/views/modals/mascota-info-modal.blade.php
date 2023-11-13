@@ -28,9 +28,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="mas-raza" class="form-control-label">{{ __('Raza') }}</label>
-                                <select wire:model="mas_raz" class="form-select" name="raza" id="raza">
+                                <select wire:model.live="mas_raz" class="form-select" name="raza" id="raza">
                                     @foreach ($razas as $raza)
-                                    <option value="{{ $raza->id }}">{{ $raza->nombre_raza }}</option>
+                                    <option value="{{ $raza->id }}" 
+                                        @if( $raza->id === $mas_raz)
+                                            selected="selected"
+                                        @endif
+                                        >{{ $raza->nombre_raza }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -51,9 +55,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="user-email" class="form-control-label">{{ __('Edad') }}</label>
-                                <div class="@error('email')border border-danger rounded-3 @enderror">
+                                <div class="@error('edad')border border-danger rounded-3 @enderror">
                                     <input wire:model="mas_edad" class="form-control" value="" type="edad" placeholder="edad" id="cliente-correo" name="email">
-                                        @error('email')
+                                        @error('edad')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -61,7 +65,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="mas-raza" class="form-control-label">{{ __('Sexo') }}</label>
+                                <label for="mas-s" class="form-control-label">{{ __('Sexo') }}</label>
                                 <select wire:model.live="mas_s" class="form-select" name="sexo" id="sexo">
                                     <option value="Macho">Macho</option>
                                     <option value="Hembra">Hembra</option>
@@ -84,7 +88,7 @@
                     @if($mas_id_sel === 0)
                     <button wire:click.prevent="CreateMasc()" class="btn bg-gradient-primary" data-bs-dismiss="modal">Crear</button>
                     @else
-                    <button wire:click.prevent="Update()" class="btn bg-gradient-primary">Guardar</button>
+                    <button wire:click.prevent="UpdateMasc()" class="btn bg-gradient-primary">Guardar</button>
                     @endif
                 </div>
             </div>
