@@ -82,15 +82,15 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
-                    @if($mas_id_sel === 0)
+            </div>
+            <div class="modal-footer">
+                <button class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
+                @if($mas_id_sel === 0)
                     <button wire:click.prevent="CreateMasc()" class="btn bg-gradient-primary" data-bs-dismiss="modal">Crear</button>
-                    @else
+                @else
                     <button wire:click.prevent="UpdateMasc()" class="btn bg-gradient-primary">Guardar</button>
-                    @endif
-                </div>
+                @endif
             </div>
         </div>
     </div>
+</div>
