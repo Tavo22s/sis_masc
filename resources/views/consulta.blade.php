@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('livewire.consulta-component')
+@livewire('consulta-component', ['id' => $id])
 
 @endsection

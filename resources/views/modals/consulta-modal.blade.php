@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label for="motivo-consulta" class="form-control-label">{{ __('Motivo de la consulta') }}</label>
                                 <div class="@error('motivo.consulta')border border-danger rounded-3 @enderror">
-                                    <input wire:model.live="motivo" class="form-control" value="" type="text" placeholder="Motivo" name="motivo-consulta">
+                                    <input wire:model="motivo" class="form-control" type="text" placeholder="Motivo" name="motivo-consulta">
                                         @error('motivo-consulta')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
@@ -67,7 +67,7 @@
             <div class="modal-footer">
                 <button class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
                 @if($id_consulta === 0)
-                <button wire:click='crearConsulta()' wire:confirm="seguro" class="btn bg-gradient-primary">Crear</button>
+                <button wire:click='Crear()' class="btn bg-gradient-primary">Crear</button>
                 @else
                 <button class="btn bg-gradient-primary">Guardar</button>
                 @endif

@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 
     <div class="row">
         <div class="col-12">
@@ -131,13 +129,67 @@
                                     <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
                                         Mot.Prox.Consulta
                                     </th>
+                                    <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
+                                        F:Prox.Consulta
+                                    </th>
                                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                         Action
                                     </th>
                                 </tr>
                             </thead>
                               <tbody>
-                                  
+                                @foreach ($consultas as $consulta)
+                                <tr>
+                                  <td>
+                                    <div class="d-flex px-2">
+                                      <div>
+                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex px-2">
+                                      <div>
+                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex px-2">
+                                      <div>
+                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex px-2">
+                                      <div>
+                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{ $consulta->motivo_consulta }}</p>
+                                  </td>
+                                  <td>
+                                    <span class="text-xs font-weight-bold">{{ $consulta->fecha_consulta }}</span>
+                                  </td>
+                                  <td>
+                                    <span class="text-xs font-weight-bold">{{ $consulta->recomendaciones }}</span>
+                                  </td>
+                                  <td>
+                                    <span class="text-xs font-weight-bold">{{ $consulta->motivo_proxima_consulta }}</span>
+                                  </td>
+                                  <td>
+                                    <span class="text-xs font-weight-bold">{{ $consulta->fecha_proxima_consulta }}</span>
+                                  </td>
+                                  <td class="align-middle">
+                                    <button class="btn btn-link text-secondary mb-0">
+                                      <i class="fa fa-ellipsis-v text-xs"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                @endforeach
                               </tbody>
                           </table>
                       </div>
@@ -146,4 +198,3 @@
             </div>
         </div>
     </div>
-@endsection

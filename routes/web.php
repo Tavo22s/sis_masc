@@ -37,7 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('especies');
 	})->name('especies');
 
-	Route::get('/historia-clinica/{id}', ConsultaComponent::class)->name('historia-clinica');
+	Route::get('/historia-clinica/{id}', function($id){
+		return view('consulta', ['id'=>$id]);
+	})->name('historia-clinica');
 
 	Route::get('billing', function () {
 		return view('billing');
