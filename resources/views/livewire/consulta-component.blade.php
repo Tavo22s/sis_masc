@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">  
+
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 mx-4">
@@ -100,11 +100,9 @@
                       <div class="d-flex flex-row justify-content-between">
                         <div class="col-sm-7">
                         </div>
-                        <button class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal" data-bs-target="#cliente-modal" type="button">+&nbsp; Agregar Cliente</button>
+                        <button class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal" data-bs-target="#consulta-modal" type="button">+&nbsp; Agregar Cliente</button>
                       </div>
                     </div>
-                    
-                    <div class="container">
                       <div class="table-responsive p-0">
                           <table class="table align-items-center mb-0">
                             <thead class="">
@@ -143,10 +141,9 @@
                               </tbody>
                           </table>
                       </div>
-                    </div>
+                    @include('modals.consulta-modal')
                 </div>
             </div>
         </div>
     </div>
-</main>
 @endsection

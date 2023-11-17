@@ -4,12 +4,20 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Mascota;
+use App\Models\Consulta;
 use Illuminate\Encryption\Encrypter;
 
 class ConsultaComponent extends Component
 {
     private $local_id;
     private $m;
+
+    public $id_consulta = 0,
+            $motivo = 'asd',
+            $fecha,
+            $motivo_prox = '',
+            $fecha_prox,
+            $rec = '';
     public function mount($id)
     {
         $clave = env('APP_KEY');
@@ -32,5 +40,11 @@ class ConsultaComponent extends Component
     public function render()
     {
         return view("livewire.consulta-component", ['datos' => $this->m]);
+    }
+
+    public function crearConsulta()
+    {
+        dd($this->local_id);
+        
     }
 }

@@ -1103,6 +1103,7 @@ var soft = {
     document.addEventListener('DOMContentLoaded', function() {
       var gridDiv = document.querySelector('#datatableSimple');
       new agGrid.Grid(gridDiv, gridOptions);
+      
     });
   },
   initVectorMap: function() {
