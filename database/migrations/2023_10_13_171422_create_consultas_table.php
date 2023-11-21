@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('mascota_id');
             $table->string('motivo_consulta', 50);
             $table->date('fecha_consulta');
-            $table->string('recomendaciones', 50);
+            $table->string('recomendaciones', 254);
             $table->string('motivo_proxima_consulta', 50);
             $table->date('fecha_proxima_consulta');
             $table->boolean('activo')->default(true);

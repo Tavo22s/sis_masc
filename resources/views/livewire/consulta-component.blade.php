@@ -117,20 +117,20 @@
                                     <th class="text-center text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                                         Pl.Ter.
                                     </th>
-                                    <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-                                        Mot.Consulta
+                                    <th class="text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                        Motivo<br>Consulta
                                     </th>
                                     <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
-                                        F.Consulta
+                                        Fecha<br>Consulta
                                     </th>
                                     <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
                                         Recomendaciones
                                     </th>
                                     <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
-                                        Mot.Prox.Consulta
+                                        Mot.Prox.<br>Consulta
                                     </th>
                                     <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
-                                        F:Prox.Consulta
+                                        Fecha Prox.<br>Consulta
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                         Action
@@ -142,51 +142,56 @@
                                 <tr>
                                   <td>
                                     <div class="d-flex px-2">
-                                      <div>
-                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
-                                      </div>
+                                      <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                        <i class="fas fa-dog"></i>
+                                      </a>
                                     </div>
                                   </td>
                                   <td>
                                     <div class="d-flex px-2">
-                                      <div>
-                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
-                                      </div>
+                                      <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                        <i class="fas fa-dog"></i>
+                                      </a>
                                     </div>
                                   </td>
                                   <td>
                                     <div class="d-flex px-2">
-                                      <div>
-                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
-                                      </div>
+                                      <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                        <i class="fas fa-dog"></i>
+                                      </a>
                                     </div>
                                   </td>
                                   <td>
                                     <div class="d-flex px-2">
-                                      <div>
-                                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
-                                      </div>
+                                      <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                        <i class="fas fa-dog"></i>
+                                      </a>
                                     </div>
                                   </td>
                                   <td>
-                                    <p class="text-sm font-weight-bold mb-0">{{ $consulta->motivo_consulta }}</p>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $consulta->motivo_consulta }}</p>
                                   </td>
                                   <td>
-                                    <span class="text-xs font-weight-bold">{{ $consulta->fecha_consulta }}</span>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $consulta->fecha_consulta }}</p>
                                   </td>
                                   <td>
-                                    <span class="text-xs font-weight-bold">{{ $consulta->recomendaciones }}</span>
+                                    <span class="d-inline-block text-center text-truncate text-xs font-weight-bold" style="max-width: 150px;">{{ $consulta->recomendaciones }}</span> 
                                   </td>
                                   <td>
-                                    <span class="text-xs font-weight-bold">{{ $consulta->motivo_proxima_consulta }}</span>
+                                    <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->motivo_proxima_consulta }}</p>
                                   </td>
                                   <td>
-                                    <span class="text-xs font-weight-bold">{{ $consulta->fecha_proxima_consulta }}</span>
+                                    <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->fecha_proxima_consulta }}</p>
                                   </td>
                                   <td class="align-middle">
-                                    <button class="btn btn-link text-secondary mb-0">
-                                      <i class="fa fa-ellipsis-v text-xs"></i>
-                                    </button>
+                                    <a class="mx-3" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                      <i class="fa fa-edit text-secondary"></i>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                      <span>
+                                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                      </span>
+                                    </a>
                                   </td>
                                 </tr>
                                 @endforeach
