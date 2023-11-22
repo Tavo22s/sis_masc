@@ -184,10 +184,10 @@
                                     <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->fecha_proxima_consulta }}</p>
                                   </td>
                                   <td class="align-middle">
-                                    <a class="mx-3" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                    <a wire:click.prevent="Editar({{ $consulta->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
                                       <i class="fa fa-edit text-secondary"></i>
                                     </a>
-                                    <a href="javascript:void(0);">
+                                    <a wire:click.prevent="Destroy({{ $consulta->id }})" href="javascript:void(0);">
                                       <span>
                                         <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                       </span>

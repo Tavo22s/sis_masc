@@ -38,7 +38,7 @@ class ConsultaComponent extends Component
             ->where('mascotas.id', $this->local_id)
             ->first();
         
-        $consultas = Consulta::where('mascota_id', $this->local_id)->get();
+        $consultas = Consulta::where('mascota_id', $this->local_id)->where('activo', true)->get();
         
         return view("livewire.consulta-component", ['datos' => $this->m, 'consultas' =>$consultas]);
     }
@@ -53,5 +53,42 @@ class ConsultaComponent extends Component
             'motivo_proxima_consulta' => $this->motivo_prox,
             'fecha_proxima_consulta'=> $this->fecha_prox,
         ]);
+
+        $this->motivo = '';
+        $this->fecha = '';
+        $this->rec = '';
+        $this->motivo_prox = '';
+        $this->fecha_prox = '';
+    }
+
+    public function Editar($id)
+    {
+        $consulta = Consulta::find($id);
+
+        $this->motivo = $consulta->motivo_consulta;
+        $this->fecha = $consulta->fecha_consulta;
+        $this->rec = $consulta->recomendaciones;
+        $this->motivo_prox = $consulta->motivo_proxima_consulta;
+        $this->fecha_prox = $consulta->fecha_proxima_consulta;
+        $this->id_consulta = $consulta->id;
+    }
+
+    public function Update()
+    {
+        $consulta = Consulta::find($this->id_consulta);
+        $consulta->update([
+            'motivo_consulta' => $this->motivo,
+            'fecha_consulta' => $this->fecha,
+            'recomendaciones' => $this->rec,
+            'motivo_proxima_consulta' => $this->motivo_prox,
+            'fecha_proxima_consulta'=> $this->fecha_prox,
+        ]);
+    }
+
+    public function Destroy($id)
+    {
+        $consulta = Consulta::find($id);
+        $consulta->activo = false;
+        $consulta->save();
     }
 }

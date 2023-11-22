@@ -67,9 +67,9 @@
             <div class="modal-footer">
                 <button class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
                 @if($id_consulta === 0)
-                <button wire:click='Crear()' class="btn bg-gradient-primary">Crear</button>
+                    <button wire:click='Crear()' class="btn bg-gradient-primary">Crear</button>
                 @else
-                <button class="btn bg-gradient-primary">Guardar</button>
+                    <button wire:click.prevent="Update()" class="btn bg-gradient-primary">Guardar</button>
                 @endif
             </div>
         </div>
