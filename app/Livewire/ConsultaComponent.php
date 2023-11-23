@@ -5,10 +5,11 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Mascota;
 use App\Models\Consulta;
-use Illuminate\Encryption\Encrypter;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ConsultaComponent extends Component
 {
+    use LivewireAlert;
     public $local_id;
     public $m;
 
@@ -18,6 +19,9 @@ class ConsultaComponent extends Component
             $motivo_prox = '',
             $fecha_prox,
             $rec = '';
+    protected $listeners = [
+        'confirmed'
+    ];
     public function mount($id)
     {
         $clave = env('APP_KEY');
@@ -59,6 +63,11 @@ class ConsultaComponent extends Component
         $this->rec = '';
         $this->motivo_prox = '';
         $this->fecha_prox = '';
+        $this->alert('success', 'Se creo la Consulta', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+        ]);
     }
 
     public function Editar($id)
@@ -87,8 +96,30 @@ class ConsultaComponent extends Component
 
     public function Destroy($id)
     {
-        $consulta = Consulta::find($id);
+        $this->id_consulta = $id;
+        $this->alert('question', '¿Está seguro?', [
+            'position' => 'center',
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => 'confirmed',
+            'showDenyButton' => true,
+            'onDenied' => '',
+            'denyButtonText' => 'Cancelar',
+            'confirmButtonText' => 'Si',
+           ]);
+    }
+
+    public function confirmed()
+    {
+        $consulta = Consulta::find($this->id_consulta);
         $consulta->activo = false;
         $consulta->save();
+        $this->alert('success', 'Se elimino', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+        ]);
     }
+
+
 }
