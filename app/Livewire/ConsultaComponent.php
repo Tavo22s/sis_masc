@@ -58,11 +58,6 @@ class ConsultaComponent extends Component
             'fecha_proxima_consulta'=> $this->fecha_prox,
         ]);
 
-        $this->motivo = '';
-        $this->fecha = '';
-        $this->rec = '';
-        $this->motivo_prox = '';
-        $this->fecha_prox = '';
         $this->alert('success', 'Se creo la Consulta', [
             'position' => 'center',
             'timer' => 3000,
@@ -121,5 +116,13 @@ class ConsultaComponent extends Component
         ]);
     }
 
-
+    public function ResetC()
+    {
+        $this->id_consulta = 0;
+        $this->motivo = '';
+        $this->fecha = '';
+        $this->rec = '';
+        $this->motivo_prox = '';
+        $this->fecha_prox = '';
+    }
 }
