@@ -41,6 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('consulta', ['id'=>$id]);
 	})->name('historia-clinica');
 
+	Route::get('/diagnostico', function(){
+		return view('diagnostico');
+	})->name('diagnostico');
+
 	Route::get('billing', function () {
 		return view('billing');
 	})->name('billing');
