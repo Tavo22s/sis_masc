@@ -18,7 +18,7 @@ class DiagnosticoComponent extends Component
         $nombre = '';
     public function render()
     {
-        $diagnosticos = Diagnostico::paginate(5);
+        $diagnosticos = Diagnostico::paginate(10);
         return view('livewire.diagnostico-component', [
             'diagnosticos' => $diagnosticos
         ]);

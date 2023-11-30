@@ -18,7 +18,7 @@ class PlanComponent extends Component
         $nombre = '';
     public function render()
     {
-        $planes = Plan::paginate(5);
+        $planes = Plan::paginate(10);
         return view('livewire.plan-component', ['planes' => $planes]);
     }
 

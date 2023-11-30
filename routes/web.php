@@ -9,7 +9,6 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\ConsultaComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +43,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/diagnostico', function(){
 		return view('diagnostico');
 	})->name('diagnostico');
+
+	Route::get('/vacunas', function(){
+		return view('vacunas');
+	})->name('vacunas');
 
 	Route::get('billing', function () {
 		return view('billing');

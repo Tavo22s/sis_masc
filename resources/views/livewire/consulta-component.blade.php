@@ -1,5 +1,4 @@
-
-
+<main class="main-content position-relative h-100 mt-1 border-radius-lg ">  
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 mx-4">
@@ -203,3 +202,4 @@
             </div>
         </div>
     </div>
+</main>

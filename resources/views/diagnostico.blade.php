@@ -2,7 +2,15 @@
 
 @section('content')
 
-@livewire('diagnostico-component')
-@livewire('plan-component')
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            @livewire('diagnostico-component')
+        </div>
+        <div class="col-6">
+            @livewire('plan-component')
+        </div>
+    </div>
+</div>
 
 @endsection
