@@ -39,6 +39,43 @@
                             </th>
                         </tr>
                     </thead>
+                    <tbody>
+                        @foreach ($ex_medicos as $ex_medico)
+                            <tr>
+                                <td>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $ex_medico->peso }}</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $ex_medico->temperatura }}</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $ex_medico->frecuencia_cardiaca }}</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $ex_medico->frecuencia_respiratoria }}</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $ex_medico->tllc }}</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $ex_medico->mucosa }}</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs text-center font-weight-bold mb-0">{{ $ex_medico->observaciones }}</p>
+                                </td>
+                                <td class="align-middle">
+                                    <a wire:click.prevent="Editar({{ $ex_medico->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                        <i class="fa fa-edit text-secondary"></i>
+                                    </a>
+                                    <a wire:click.prevent="Destroy({{ $ex_medico->id }})" href="javascript:void(0);">
+                                        <span>
+                                            <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

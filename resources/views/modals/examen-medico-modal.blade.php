@@ -17,19 +17,28 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="motivo-consulta" class="form-control-label">{{ __('Motivo de la consulta') }}</label>
-                                <div class="@error('motivo.consulta')border border-danger rounded-3 @enderror">
-                                    <input wire:model="motivo" class="form-control" type="text" placeholder="Motivo" name="motivo-consulta">
-                                        @error('motivo-consulta')
+                                <label for="peso" class="form-control-label">{{ __('Peso') }}</label>
+                                <div class="@error('peso')border border-danger rounded-3 @enderror">
+                                    <input wire:model="peso" class="form-control" type="number" placeholder="Peso">
+                                        @error('peso')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="motivo-prox-consulta" class="form-control-label">{{ __('Motiva de la proxima consulta') }}</label>
-                                <div class="@error('motivo.prox.consulta')border border-danger rounded-3 @enderror">
-                                    <input wire:model="motivo_prox" class="form-control" value="" type="text" placeholder="Motivo" name="motivo-prox-consulta">
-                                        @error('motivo.prox.consulta')
+                                <label for="motivo-prox-consulta" class="form-control-label">{{ __('Frecuencia Cardiaca') }}</label>
+                                <div class="@error('frec_cardiaca')border border-danger rounded-3 @enderror">
+                                    <input wire:model="frec_cardiaca" class="form-control" type="number" placeholder="Frecuencia Cardiaca">
+                                        @error('frec_cardiaca')
+                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tllc" class="form-control-label">{{__('TLLC')}}</label>
+                                <div class="@error('tllc')border border-danger rounded-3 @enderror">
+                                    <input wire:model="tllc" type="number" class="form-control" placeholder="Tllc">
+                                        @error('tllc')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -37,19 +46,28 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="consulta-fecha" class="form-control-label">{{__('Fecha de la consulta')}}</label>
-                                <div class="@error('consulta.fecha')border border-danger rounded-3 @enderror">
-                                    <input wire:model="fecha" type="date" class="form-control" value="" name="consulta-fecha">
-                                        @error('consulta.fecha')
+                                <label for="temperatura" class="form-control-label">{{ __('Temperatura') }}</label>
+                                <div class="@error('temperatura')border border-danger rounded-3 @enderror">
+                                    <input wire:model="temperatura" class="form-control" type="text" placeholder="Temperatura">
+                                        @error('temperatura')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="consulta-prox-fecha" class="form-control-label">{{__('Fecha de la proxima consulta')}}</label>
-                                <div class="@error('consulta.prox.fecha')border border-danger rounded-3 @enderror">
-                                    <input wire:model="fecha_prox" type="date" class="form-control" value="" name="consulta-prox-fecha">
-                                        @error('consulta.prox.fecha')
+                                <label for="frec_respiratoria" class="form-control-label">{{__('Frecuencia Respiratoria')}}</label>
+                                <div class="@error('frec_respiratoria')border border-danger rounded-3 @enderror">
+                                    <input wire:model="frec_respiratoria" type="number" class="form-control" placeholder="Frecuencia Respiratoria">
+                                        @error('frec_respiratoria')
+                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mucosa" class="form-control-label">{{__('Mucosas')}}</label>
+                                <div class="@error('mucosa')border border-danger rounded-3 @enderror">
+                                    <input wire:model="mucosa" type="text" class="form-control" placeholder="Mucosa">
+                                        @error('mucosa')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -57,8 +75,13 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="rec" class="form-control-label">{{__('Recomendaciones')}}</label>
-                                <textarea wire:model="rec" rows="3" class="form-control" value="" name="rec" placeholder="Recomedaciones"></textarea>              
+                                <label for="obs" class="form-control-label">{{__('Recomendaciones')}}</label>
+                                <div class="@error('obs')border border-danger rounded-3 @enderror">
+                                    <textarea wire:model="obs" rows="3" class="form-control" placeholder="Observaciones"></textarea>
+                                    @error('obs')
+                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                    @enderror
+                                </div>              
                             </div>
                         </div>
                     </div>

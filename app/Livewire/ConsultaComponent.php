@@ -76,7 +76,7 @@ class ConsultaComponent extends Component
 
         $this->alert('success', 'Se creo la Consulta', [
             'position' => 'center',
-            'timer' => 3000,
+            'timer' => 2000,
             'toast' => false,
         ]);
         $this->default();

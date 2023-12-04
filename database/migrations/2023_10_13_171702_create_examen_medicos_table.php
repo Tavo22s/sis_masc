@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('consulta_id');
             $table->integer('peso');
-            $table->string('temperatura', 5);
+            $table->string('temperatura', 10);
             $table->string('frecuencia_cardiaca', 10);
             $table->string('frecuencia_respiratoria', 10);
             $table->string('tllc', 10);
             $table->string('mucosa', 20);
-            $table->string('observaciones', 50);
+            $table->string('observaciones', 254);
             $table->boolean('activo')->default(true);
             $table->timestamps();
 
