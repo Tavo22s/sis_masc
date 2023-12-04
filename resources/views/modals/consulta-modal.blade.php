@@ -18,18 +18,18 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="motivo-consulta" class="form-control-label">{{ __('Motivo de la consulta') }}</label>
-                                <div class="@error('motivo.consulta')border border-danger rounded-3 @enderror">
-                                    <input wire:model="motivo" class="form-control" type="text" placeholder="Motivo" name="motivo-consulta">
-                                        @error('motivo-consulta')
+                                <div class="@error('motivo')border border-danger rounded-3 @enderror">
+                                    <input wire:model="motivo" class="form-control" type="text" placeholder="Motivo">
+                                        @error('motivo')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="motivo-prox-consulta" class="form-control-label">{{ __('Motiva de la proxima consulta') }}</label>
-                                <div class="@error('motivo.prox.consulta')border border-danger rounded-3 @enderror">
-                                    <input wire:model="motivo_prox" class="form-control" value="" type="text" placeholder="Motivo" name="motivo-prox-consulta">
-                                        @error('motivo.prox.consulta')
+                                <div class="@error('motivo_prox')border border-danger rounded-3 @enderror">
+                                    <input wire:model="motivo_prox" class="form-control" type="text" placeholder="Motivo">
+                                        @error('motivo_prox')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -38,18 +38,18 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="consulta-fecha" class="form-control-label">{{__('Fecha de la consulta')}}</label>
-                                <div class="@error('consulta.fecha')border border-danger rounded-3 @enderror">
-                                    <input wire:model="fecha" type="date" class="form-control" value="" name="consulta-fecha">
-                                        @error('consulta.fecha')
+                                <div class="@error('fecha')border border-danger rounded-3 @enderror">
+                                    <input wire:model="fecha" type="date" class="form-control">
+                                        @error('fecha')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="consulta-prox-fecha" class="form-control-label">{{__('Fecha de la proxima consulta')}}</label>
-                                <div class="@error('consulta.prox.fecha')border border-danger rounded-3 @enderror">
-                                    <input wire:model="fecha_prox" type="date" class="form-control" value="" name="consulta-prox-fecha">
-                                        @error('consulta.prox.fecha')
+                                <div class="@error('fecha_prox')border border-danger rounded-3 @enderror">
+                                    <input wire:model="fecha_prox" type="date" class="form-control">
+                                        @error('fecha_prox')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -57,8 +57,13 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="rec" class="form-control-label">{{__('Recomendaciones')}}</label>
-                                <textarea wire:model="rec" rows="3" class="form-control" value="" name="rec" placeholder="Recomedaciones"></textarea>              
+                                <label for="recomendacion" class="form-control-label">{{__('Recomendaciones')}}</label>
+                                <div class="@error('rec')border border-danger rounded-3 @enderror">
+                                    <textarea wire:model="rec" rows="3" class="form-control" placeholder="Recomedaciones"></textarea>
+                                    @error('rec')
+                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                        @enderror
+                                </div>
                             </div>
                         </div>
                     </div>

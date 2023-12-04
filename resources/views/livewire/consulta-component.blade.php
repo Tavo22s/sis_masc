@@ -97,7 +97,7 @@
                         <div class="d-flex flex-row justify-content-between">
                             <div class="col-sm-7">
                             </div>
-                            <button wire:click.prevent="ResetC()" class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal" data-bs-target="#consulta-modal" type="button">+&nbsp; Agregar consulta</button>
+                            <button wire:click.prevent="default()" class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal" data-bs-target="#consulta-modal" type="button">+&nbsp; Agregar consulta</button>
                         </div>
                     </div>
                     <div class="table-responsive p-0">

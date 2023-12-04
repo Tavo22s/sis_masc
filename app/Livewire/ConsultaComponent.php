@@ -49,6 +49,22 @@ class ConsultaComponent extends Component
 
     public function Crear()
     {
+        $rules=[
+            'motivo' => 'required|max:50',
+            'fecha' => 'required',
+            'motivo_prox' => 'max:50',
+            'rec' => 'max:254'
+        ];
+        $messages=[
+            'motivo.required' => 'El motivo es requerido.',
+            'motivo.max' => 'El motivo debe ser de maximo 50 caracteres.',
+            'fecha.required' => 'La fecha es requerida.',
+            'motivo_prox.max' => 'El motivo de la proxima consulta debe ser de maximo 50 caracteres.',
+            'rec.max' => 'La recomendacion debe ser de maximo 254 caracteres.'
+        ];
+
+        $this->validate($rules, $messages);
+
         Consulta::create([
             'mascota_id' => $this->local_id,
             'motivo_consulta' => $this->motivo,
@@ -63,6 +79,7 @@ class ConsultaComponent extends Component
             'timer' => 3000,
             'toast' => false,
         ]);
+        $this->default();
     }
 
     public function Editar($id)
@@ -79,6 +96,21 @@ class ConsultaComponent extends Component
 
     public function Update()
     {
+        $rules=[
+            'motivo' => 'required|max:50',
+            'fecha' => 'required',
+            'motivo_prox' => 'max:50',
+            'rec' => 'max:254'
+        ];
+        $messages=[
+            'motivo.required' => 'El motivo es requerido.',
+            'motivo.max' => 'El motivo debe ser de maximo 50 caracteres.',
+            'fecha.required' => 'La fecha es requerida.',
+            'motivo_prox.max' => 'El motivo de la proxima consulta debe ser de maximo 50 caracteres.',
+            'rec.max' => 'La recomendacion debe ser de maximo 254 caracteres.'
+        ];
+
+        $this->validate($rules, $messages);
         $consulta = Consulta::find($this->id_consulta);
         $consulta->update([
             'motivo_consulta' => $this->motivo,
@@ -116,7 +148,7 @@ class ConsultaComponent extends Component
         ]);
     }
 
-    public function ResetC()
+    public function default()
     {
         $this->id_consulta = 0;
         $this->motivo = '';
