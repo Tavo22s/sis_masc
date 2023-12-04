@@ -9,7 +9,7 @@
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="container">
                         <table class="table table-bordered">
-                              <tbody>
+                            <tbody>
                                 <tr class="table-dark">
                                     <td colspan="4">
                                     </td>    
@@ -88,7 +88,7 @@
                                     <td colspan="4">
                                     </td>    
                                 </tr>
-                              </tbody>
+                            </tbody>
                         </table>
                     </div>
                     <hr>
@@ -100,106 +100,105 @@
                             <button wire:click.prevent="ResetC()" class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal" data-bs-target="#consulta-modal" type="button">+&nbsp; Agregar consulta</button>
                         </div>
                     </div>
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead class="">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead class="">
+                                <tr>
+                                    <th class="text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                        Ex.Med.
+                                    </th>
+                                    <th class="text-center text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                                        Diag.Dif.
+                                    </th>
+                                    <th class="text-center text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                                        Pl.Diag.
+                                    </th>
+                                    <th class="text-center text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                                        Pl.Ter.
+                                    </th>
+                                    <th class="text-center text-secondary text-xs font-weight-bolder opacity-7">
+                                        Motivo<br>Consulta
+                                    </th>
+                                    <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
+                                        Fecha<br>Consulta
+                                    </th>
+                                    <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
+                                        Recomendaciones
+                                    </th>
+                                    <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
+                                        Mot.Prox.<br>Consulta
+                                    </th>
+                                    <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
+                                        Fecha Prox.<br>Consulta
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($consultas as $consulta)
                                     <tr>
-                                        <th class="text-center text-secondary text-xs font-weight-bolder opacity-7">
-                                            Ex.Med.
-                                        </th>
-                                        <th class="text-center text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                            Diag.Dif.
-                                        </th>
-                                        <th class="text-center text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                            Pl.Diag.
-                                        </th>
-                                        <th class="text-center text-secondary text-xs font-weight-bolder opacity-7 ps-2">
-                                            Pl.Ter.
-                                        </th>
-                                        <th class="text-center text-secondary text-xs font-weight-bolder opacity-7">
-                                            Motivo<br>Consulta
-                                        </th>
-                                        <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
-                                            Fecha<br>Consulta
-                                        </th>
-                                        <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
-                                            Recomendaciones
-                                        </th>
-                                        <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
-                                            Mot.Prox.<br>Consulta
-                                        </th>
-                                        <th class="text-center text-secondary text-secondary text-xs font-weight-bolder opacity-7">
-                                            Fecha Prox.<br>Consulta
-                                        </th>
-                                        <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-                                            Action
-                                        </th>
+                                        <td>
+                                            <div class="d-flex px-2">
+                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                    <i class="fas fa-dog"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2">
+                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                    <i class="fas fa-dog"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2">
+                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                    <i class="fas fa-dog"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2">
+                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                    <i class="fas fa-dog"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs text-center font-weight-bold mb-0">{{ $consulta->motivo_consulta }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs text-center font-weight-bold mb-0">{{ $consulta->fecha_consulta }}</p>
+                                        </td>
+                                        <td>
+                                            <span class="d-inline-block text-center text-truncate text-xs font-weight-bold" style="max-width: 150px;">{{ $consulta->recomendaciones }}</span> 
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->motivo_proxima_consulta }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->fecha_proxima_consulta }}</p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a wire:click.prevent="Editar({{ $consulta->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                <i class="fa fa-edit text-secondary"></i>
+                                            </a>
+                                            <a wire:click.prevent="Destroy({{ $consulta->id }})" href="javascript:void(0);">
+                                                <span>
+                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                </span>
+                                            </a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($consultas as $consulta)
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex px-2">
-                                                    <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
-                                                        <i class="fas fa-dog"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex px-2">
-                                                    <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
-                                                        <i class="fas fa-dog"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex px-2">
-                                                    <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
-                                                        <i class="fas fa-dog"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex px-2">
-                                                    <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
-                                                        <i class="fas fa-dog"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs text-center font-weight-bold mb-0">{{ $consulta->motivo_consulta }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs text-center font-weight-bold mb-0">{{ $consulta->fecha_consulta }}</p>
-                                            </td>
-                                            <td>
-                                                <span class="d-inline-block text-center text-truncate text-xs font-weight-bold" style="max-width: 150px;">{{ $consulta->recomendaciones }}</span> 
-                                            </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->motivo_proxima_consulta }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->fecha_proxima_consulta }}</p>
-                                            </td>
-                                            <td class="align-middle">
-                                                <a wire:click.prevent="Editar({{ $consulta->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
-                                                    <i class="fa fa-edit text-secondary"></i>
-                                                </a>
-                                                <a wire:click.prevent="Destroy({{ $consulta->id }})" href="javascript:void(0);">
-                                                    <span>
-                                                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                    </span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    @include('modals.consulta-modal')
                 </div>
+                @include('modals.consulta-modal')
             </div>
         </div>
     </div>

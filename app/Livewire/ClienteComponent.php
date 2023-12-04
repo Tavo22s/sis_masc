@@ -173,10 +173,14 @@ class ClienteComponent extends Component
 
     public function destroy_confirmed()
     {
-        dd('llegue');
         $cliente = Cliente::find($this->id_seleccionado);
         $cliente->activo = false;
         $cliente->save();
+        $this->alert('success', 'Se elimino', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+        ]);
     }
 
     public function AddMasc()
