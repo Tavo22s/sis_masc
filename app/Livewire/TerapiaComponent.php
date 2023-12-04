@@ -3,22 +3,21 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Vacuna;
+use App\Models\Terapia;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
 
-class VacunaComponent extends Component
+class TerapiaComponent extends Component
 {
-    use LivewireAlert;
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
+    use LivewireAlert;
 
     public $nombre = '',
-            $id_seleccionado = 0;
+        $id_seleccionado = 0;
     public function render()
     {
-        $vacunas = Vacuna::paginate(10);
-        return view('livewire.vacuna-component', ['vacunas' => $vacunas]);
+        $terapias = Terapia::paginate(10);
+        return view('livewire.terapia-component', ['terapias' => $terapias]);
     }
 
     public function default()
@@ -30,14 +29,14 @@ class VacunaComponent extends Component
     public function Crear()
     {
         $rules=[
-            'nombre' => 'required|unique:vacunas',
+            'nombre' => 'required|unique:terapias',
         ];
         $messages=[
             'nombre.required' => 'El nombre es requerido.',
             'nombre.unique' => 'El elemento ya existe.',
         ];
         $this->validate($rules, $messages);
-        Vacuna::create([
+        Terapia::create([
             'nombre' => $this->nombre,
         ]);
         $this->alert('success', 'Se registro correctamente.', [
@@ -50,5 +49,6 @@ class VacunaComponent extends Component
 
     public function Update()
     {
+
     }
 }

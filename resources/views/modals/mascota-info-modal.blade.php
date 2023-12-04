@@ -43,10 +43,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="cliente-nombre" class="form-control-label">{{ __('Nombre de mascota') }}</label>
-                                <div class="@error('cliente.nombre')border border-danger rounded-3 @enderror">
-                                    <input wire:model="mas_nom" class="form-control" value="" type="text" placeholder="Nombre" id="cliente-nombre" name="nombre">
-                                        @error('nombre')
+                                <label for="mascota-nombre" class="form-control-label">{{ __('Nombre de mascota') }}</label>
+                                <div class="@error('mas_nom')border border-danger rounded-3 @enderror">
+                                    <input wire:model="mas_nom" class="form-control" value="" type="text" placeholder="Nombre" name="mas_nom">
+                                        @error('mas_nom')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -54,10 +54,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-email" class="form-control-label">{{ __('Edad') }}</label>
-                                <div class="@error('edad')border border-danger rounded-3 @enderror">
-                                    <input wire:model="mas_edad" class="form-control" value="" type="edad" placeholder="edad" id="cliente-correo" name="email">
-                                        @error('edad')
+                                <label for="mascota_edad" class="form-control-label">{{ __('Edad') }}</label>
+                                <div class="@error('mas_edad')border border-danger rounded-3 @enderror">
+                                    <input wire:model="mas_edad" class="form-control" type="tel" placeholder="Edad" name="mas_edad">
+                                        @error('mas_edad')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -76,8 +76,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="cliente.phone1" class="form-control-label">{{ __('Observaciones') }}</label>
-                                    <textarea wire:model="mas_obs" class="form-control" rows="3" placeholder="What's up?" required></textarea>
+                                <label for="mascota_observacion" class="form-control-label">{{ __('Observaciones') }}</label>
+                                <div class="@error('mas_obs')border border-danger rounded-3 @enderror">
+                                    <textarea wire:model="mas_obs" class="form-control" rows="3" placeholder="Observaciones" required></textarea>
+                                        @error('mas_obs')
+                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                        @enderror
                                 </div>
                             </div>
                         </div>
@@ -86,7 +90,7 @@
             <div class="modal-footer">
                 <button class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancelar</button>
                 @if($mas_id_sel === 0)
-                    <button wire:click.prevent="CreateMasc()" class="btn bg-gradient-primary" data-bs-dismiss="modal">Crear</button>
+                    <button wire:click.prevent="CreateMasc()" class="btn bg-gradient-primary">Crear</button>
                 @else
                     <button wire:click.prevent="UpdateMasc()" class="btn bg-gradient-primary">Guardar</button>
                 @endif

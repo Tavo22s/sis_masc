@@ -18,8 +18,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="cliente-nombre" class="form-control-label">{{ __('Nombre') }}</label>
-                                <div class="@error('cliente.nombre')border border-danger rounded-3 @enderror">
-                                    <input wire:model="nombre" class="form-control" value="" type="text" placeholder="Nombre" id="cliente-nombre" name="nombre">
+                                <div class="@error('nombre')border border-danger rounded-3 @enderror">
+                                    <input wire:model="nombre" class="form-control" type="text" placeholder="Nombre" name="nombre">
                                         @error('nombre')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
@@ -29,9 +29,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="user-email" class="form-control-label">{{ __('Correo') }}</label>
-                                <div class="@error('email')border border-danger rounded-3 @enderror">
-                                    <input wire:model="correo" class="form-control" value="" type="email" placeholder="@example.com" id="cliente-correo" name="email">
-                                        @error('email')
+                                <div class="@error('correo')border border-danger rounded-3 @enderror">
+                                    <input wire:model="correo" class="form-control" type="email" placeholder="@example.com" name="email">
+                                        @error('correo')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -40,7 +40,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="cliente.dni" class="form-control-label">{{ __('DNI') }}</label>
-                                <div class="@error('clinte.dni')border border-danger rounded-3 @enderror">
+                                <div class="@error('dni')border border-danger rounded-3 @enderror">
                                     <input wire:model="dni" class="resize-none form-control" type="tel" placeholder="DNI" id="dni" name="dni" value="">
                                         @error('dni')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
@@ -53,9 +53,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="cliente.phone1" class="form-control-label">{{ __('Telefono 1') }}</label>
-                                <div class="@error('cliente.phone1')border border-danger rounded-3 @enderror">
-                                    <input wire:model="telefono1" class="form-control" type="tel" placeholder="40770888444" id="telefono1" name="phone1" value="">
-                                        @error('phone1')
+                                <div class="@error('telefono1')border border-danger rounded-3 @enderror">
+                                    <input wire:model="telefono1" class="form-control" type="tel" placeholder="40770888444" name="telefono1">
+                                        @error('telefono_1')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -64,9 +64,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="cliente.phone2" class="form-control-label">{{ __('Telefono 2') }}</label>
-                                <div class="@error('cliente.phone2')border border-danger rounded-3 @enderror">
-                                    <input wire:model="telefono2" class="form-control" type="tel" placeholder="40770888444" id="telefono2" name="phone2" value="">
-                                        @error('phone2')
+                                <div class="@error('telefono2')border border-danger rounded-3 @enderror">
+                                    <input wire:model="telefono2" class="form-control" type="tel" placeholder="40770888444" name="telefono2">
+                                        @error('telefono2')
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>

@@ -2,16 +2,17 @@
 
 namespace App\Livewire;
 
-use Laravel\Sail\Console\AddCommand;
 use Livewire\Component;
 use App\Models\Cliente;
 use App\Models\Mascota;
 use App\Models\Especie;
 use App\Models\Raza;
-use Illuminate\Support\Facades\Crypt;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ClienteComponent extends Component
 {
+    use LivewireAlert;
+
     public $busqueda,
         $nombre='',
         $correo='',
@@ -31,6 +32,9 @@ class ClienteComponent extends Component
             $razas=[],
             $especies=[];
 
+    protected $listeners = [
+        'destroy_confirmed'
+    ];
     private $tmp = 0;
     public function render()
     {
@@ -60,6 +64,24 @@ class ClienteComponent extends Component
 
     public function Crear()
     {
+        $rules=[
+            'nombre' => 'required|max:50',
+            'correo' => 'required|max:64',
+            'dni' => 'max:8',
+            'telefono1' => 'max:9',
+            'telefono2' => 'max:9',
+        ];
+        $messages=[
+            'nombre.required' => 'El nombre es requerido.',
+            'nombre.max' => 'El nombre debe ser de maximo 50 caracteres.',
+            'correo.required' => 'El correo es requerido.',
+            'dni.max' => 'El dni debe ser de maximo de 8 caracteres.',
+            'telefono1.max' => 'El telefono debe ser de maximo 9 caracteres.',
+            'telefono2.max' => 'El telefono debe ser de maximo 9 caracteres.',
+        ];
+
+        $this->validate($rules, $messages);
+
         Cliente::create([
             'nombre_completo' => $this->nombre,
             'correo' => $this->correo,
@@ -68,8 +90,12 @@ class ClienteComponent extends Component
             'telefono_2' => $this->telefono2
         ]);
 
-        $this->reset();
-        return redirect()->to('clientes');
+        $this->alert('success', 'Se registro correctamente.', [
+            'position' => 'center',
+            'timer' => 2000,
+            'toast' => false,
+        ]);
+        $this->default();
     }
 
     public function Editar($id)
@@ -96,7 +122,26 @@ class ClienteComponent extends Component
 
     public function Update()
     {
+        $rules=[
+            'nombre' => 'required|max:50',
+            'correo' => 'required|max:64',
+            'dni' => 'max:8',
+            'telefono1' => 'max:9',
+            'telefono2' => 'max:9',
+        ];
+        $messages=[
+            'nombre.required' => 'El nombre es requerido.',
+            'nombre.max' => 'El nombre debe ser de maximo 50 caracteres.',
+            'correo.required' => 'El correo es requerido.',
+            'dni.max' => 'El dni debe ser de maximo de 8 caracteres.',
+            'telefono1.max' => 'El telefono debe ser de maximo 9 caracteres.',
+            'telefono2.max' => 'El telefono debe ser de maximo 9 caracteres.',
+        ];
+
+        $this->validate($rules, $messages);
+
         $cliente = Cliente::find($this->id_seleccionado);
+
         $cliente->update([
             'nombre_completo' => $this->nombre,
             'correo' => $this->correo,
@@ -105,19 +150,33 @@ class ClienteComponent extends Component
             'telefono_2' => $this->telefono2
         ]);
 
-        $this->default();
-        $this->reset();
-        return redirect()->to('clientes');
+        $this->alert('success', 'Se actualizo correctamente.', [
+            'position' => 'center',
+            'timer' => 2000,
+            'toast' => false,
+        ]);
     }
 
     public function Destroy($id)
     {
-        $cliente = Cliente::find($id);
+        $this->id_seleccionado = $id;
+        $this->alert('question', '¿Está seguro?', [
+            'position' => 'center',
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => 'destroy_confirmed',
+            'showDenyButton' => true,
+            'denyButtonText' => 'Cancelar',
+            'confirmButtonText' => 'Si',
+        ]);    
+    }
+
+    public function destroy_confirmed()
+    {
+        dd('llegue');
+        $cliente = Cliente::find($this->id_seleccionado);
         $cliente->activo = false;
         $cliente->save();
-
-        $this->reset();
-        return redirect()->to('clientes');
     }
 
     public function AddMasc()
@@ -158,6 +217,18 @@ class ClienteComponent extends Component
 
     public function CreateMasc()
     {
+        $rules=[
+            'mas_nom' => 'required|max:20',
+            'mas_obs' => 'max:64',
+        ];
+        $messages=[
+            'mas_nom.required' => 'El nombre es requerido.',
+            'mas_nom.max' => 'El nombre debe ser de maximo 20 caracteres.',
+            'mas_obs.max' => 'La observacion debe ser de maximo 256 caracteres.',
+        ];
+
+        $this->validate($rules, $messages);
+
         Mascota::create([
             'nombre' => $this->mas_nom,
             'edad' => $this->mas_edad,
@@ -166,6 +237,14 @@ class ClienteComponent extends Component
             'cliente_id' => $this->id_seleccionado,
             'raza_id' => $this->mas_raz,
         ]);
+
+        $this->alert('success', 'Se registro correctamente.', [
+            'position' => 'center',
+            'timer' => 2000,
+            'toast' => false,
+        ]);
+
+        $this->AddMasc();
     }
 
     public function Rdata($id)
@@ -181,6 +260,18 @@ class ClienteComponent extends Component
 
     public function UpdateMasc()
     {
+        $rules=[
+            'mas_nom' => 'required|max:20',
+            'mas_obs' => 'max:64',
+        ];
+        $messages=[
+            'mas_nom.required' => 'El nombre es requerido.',
+            'mas_nom.max' => 'El nombre debe ser de maximo 20 caracteres.',
+            'mas_obs.max' => 'La observacion debe ser de maximo 256 caracteres.',
+        ];
+
+        $this->validate($rules, $messages);
+
         $mascota = Mascota::find($this->mas_id_sel);
         $mascota->update([
             'nombre' => $this->mas_nom,
@@ -189,6 +280,12 @@ class ClienteComponent extends Component
             'sexo' => $this->mas_s,
             'cliente_id' => $this->id_seleccionado,
             'raza_id' => $this->mas_raz,
-        ]);      
+        ]);
+
+        $this->alert('success', 'Se actualizo correctamente.', [
+            'position' => 'center',
+            'timer' => 2000,
+            'toast' => false,
+        ]);
     }
 }
