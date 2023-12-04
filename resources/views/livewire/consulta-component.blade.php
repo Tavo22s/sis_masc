@@ -141,7 +141,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                <a wire:click="$dispatch('show-examen-medico', { id: {{ $consulta->id }} })" class="mx-auto" href="javascript:void(0);">
                                                     <i class="fas fa-dog"></i>
                                                 </a>
                                             </div>
@@ -202,4 +202,5 @@
             </div>
         </div>
     </div>
+    @livewire('examen-medico-component')
 </main>
