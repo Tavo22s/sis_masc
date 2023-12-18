@@ -25,11 +25,12 @@ class PlanComponent extends Component
     public function Crear()
     {
         $rules=[
-            'nombre' => 'required|unique:plans',
+            'nombre' => 'required|unique:plans|max:254',
         ];
         $messages=[
             'nombre.required' => 'El nombre es requerido',
             'nombre.unique' => 'El elemento ya existe',
+            'nombre.max' => 'Debe ser de maximo 254 caracteres.'
         ];
 
         $this->validate($rules, $messages);
@@ -43,13 +44,12 @@ class PlanComponent extends Component
             'timer' => 2000,
             'toast' => false,
         ]);
-
-        $this->nombre = '';
+        $this->reset('nombre');
     }
 
     public function default()
     {
-        $this->nombre = '';
-        $this->id_seleccionado = 0;
+        $this->reset('nombre');
+        $this->reset('id_seleccionado');
     }
 }

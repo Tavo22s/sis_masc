@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('plan_terapias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('terapia_id');
+            $table->unsignedBigInteger('consulta_id');
             $table->string('dosis', 20);
-            $table->string('recomendaciones', 50);
+            $table->string('recomendaciones', 254);
             $table->timestamps();
 
             $table->foreign('terapia_id')->references('id')->on('terapias');
+            $table->foreign('consulta_id')->references('id')->on('consultas');
         });
     }
 

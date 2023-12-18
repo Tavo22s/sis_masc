@@ -133,7 +133,8 @@ class ConsultaComponent extends Component
             'onDenied' => '',
             'denyButtonText' => 'Cancelar',
             'confirmButtonText' => 'Si',
-           ]);
+        ]);
+        $this->reset('id_consulta');
     }
 
     public function confirmed()
@@ -150,11 +151,47 @@ class ConsultaComponent extends Component
 
     public function default()
     {
-        $this->id_consulta = 0;
-        $this->motivo = '';
-        $this->fecha = '';
-        $this->rec = '';
-        $this->motivo_prox = '';
-        $this->fecha_prox = '';
+        $this->reset('id_consulta');
+        $this->reset('motivo');
+        $this->reset('fecha');
+        $this->reset('rec');
+        $this->reset('motivo_prox');
+        $this->reset('fecha_prox');
+    }
+
+    public function opendCard($id, $nc)
+    {
+        switch($nc)
+        {
+            case 1:
+                $this->dispatch('show-examen-medico', id: $id);
+
+                $this->dispatch('show-diagnostico-diferencial', id: 0);
+                $this->dispatch('show-plan-diagnostico', id: 0);
+                $this->dispatch('show-plan-terapia', id: 0);
+                break;
+            case 2:
+                $this->dispatch('show-diagnostico-diferencial', id: $id);
+
+                $this->dispatch('show-examen-medico', id: 0);
+                $this->dispatch('show-plan-diagnostico', id: 0);
+                $this->dispatch('show-plan-terapia', id: 0);
+                break;
+            case 3:
+                $this->dispatch('show-plan-diagnostico', id: $id);
+
+                $this->dispatch('show-examen-medico', id: 0);
+                $this->dispatch('show-diagnostico-diferencial', id: 0);
+                $this->dispatch('show-plan-terapia', id: 0);
+                break;
+            case 4:
+                $this->dispatch('show-plan-terapia', id: $id);
+
+                $this->dispatch('show-examen-medico', id: 0);
+                $this->dispatch('show-diagnostico-diferencial', id: 0);
+                $this->dispatch('show-plan-diagnostico', id: 0);
+                break;
+        }
+
     }
 }

@@ -141,28 +141,28 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <a wire:click="$dispatch('show-examen-medico', { id: {{ $consulta->id }} })" class="mx-auto" href="javascript:void(0);">
+                                                <a wire:click="opendCard({{$consulta->id}}, 1)" class="mx-auto" href="javascript:void(0);">
                                                     <i class="fas fa-dog"></i>
                                                 </a>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                <a wire:click="opendCard({{$consulta->id}}, 2)" class="mx-auto" href="javascript:void(0);">
                                                     <i class="fas fa-dog"></i>
                                                 </a>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                <a wire:click="opendCard({{$consulta->id}}, 3)" class="mx-auto" href="javascript:void(0);">
                                                     <i class="fas fa-dog"></i>
                                                 </a>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <a class="mx-auto" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
+                                                <a wire:click="opendCard({{$consulta->id}}, 4)" class="mx-auto" href="javascript:void(0);">
                                                     <i class="fas fa-dog"></i>
                                                 </a>
                                             </div>
@@ -182,7 +182,7 @@
                                         <td>
                                             <p class="text-xs font-weight-bold text-center mb-0">{{ $consulta->fecha_proxima_consulta }}</p>
                                         </td>
-                                        <td class="align-middle">
+                                        <td class="text-center">
                                             <a wire:click.prevent="Editar({{ $consulta->id }})" class="mx-3" data-bs-toggle="modal" data-bs-target="#consulta-modal" href="javascript:void(0);">
                                                 <i class="fa fa-edit text-secondary"></i>
                                             </a>
@@ -203,4 +203,7 @@
         </div>
     </div>
     @livewire('examen-medico-component')
+    @livewire('diag-diferencial-component')
+    @livewire('plan-diagnostico-component')
+    @livewire('plan-terapia-component')
 </main>

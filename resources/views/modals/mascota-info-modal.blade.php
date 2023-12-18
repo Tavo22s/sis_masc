@@ -30,11 +30,11 @@
                                 <label for="mas-raza" class="form-control-label">{{ __('Raza') }}</label>
                                 <select wire:model.live="mas_raz" class="form-select" name="raza" id="raza">
                                     @foreach ($razas as $raza)
-                                    <option value="{{ $raza->id }}" 
-                                        @if( $raza->id === $mas_raz)
-                                            selected="selected"
-                                        @endif
-                                        >{{ $raza->nombre_raza }}</option>
+                                        <option value="{{ $raza->id }}" 
+                                            @if( $raza->id === $mas_raz)
+                                                selected
+                                            @endif
+                                            >{{ $raza->nombre_raza }}</option>
                                     @endforeach
                                 </select>
                             </div>

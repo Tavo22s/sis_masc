@@ -32,10 +32,11 @@ class DiagnosticoComponent extends Component
     public function Crear()
     {
         $rules=[
-            'nombre' => 'required',
+            'nombre' => 'required|max:64',
         ];
         $messages=[
-            'nombre.required' => 'El nombre es requerido',
+            'nombre.required' => 'El nombre es requerido.',
+            'nombre.max' => 'Debe ser de maximo 64 caracteres.'
         ];
 
         $this->validate($rules, $messages);
